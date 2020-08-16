@@ -1,0 +1,101 @@
+body {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+header {
+    height: 250px;
+    overflow: hidden;
+}
+
+#banner {
+    width:1000px;
+}
+
+nav {
+    position: absolute;
+    margin-top: 185px;
+    margin-left: 5%;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+nav ul li button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+nav ul li button:hover img{
+    opacity: 0.5;
+}
+nav ul li img {
+    width: 150px;
+    height: 50px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: -15px;
+}
+
+#main {
+    text-align: center;
+}
+
+
+
+/*images*/
+
+#gallerie {
+    margin-left: 15%;
+    margin-top: 3%;
+}
+
+.gallery {
+    margin: 5px;
+    float: left;
+    width: 25%;
+    height: 300px;
+}
+
+.polaroid {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 lightgray, 0 6px 20px 0 lightgray;
+    margin-bottom: 25px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 175px;
+}
+
+.caption {
+    text-align: center;
+    padding: 5px;
+}
+
+#teddy-p
+{
+    height: 180px;
+    width: 210px;
+
+}
+
+
+
+/*pied de page*/
+
+footer {
+    background: #eda84e;
+    margin-top: 650px;
+    position: absolute;
+    width: 1000px;
+    color: white;
+    height: 25px;
+}
