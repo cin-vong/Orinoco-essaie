@@ -14,6 +14,13 @@ function myRequest(sectionId, url){
        }
 
        for( const produit of response){
+        console.log(produit._id)
+        const productId = document.createElement('h5')
+        productId.textContent = produit._id;
+        section.appendChild(productId)
+      }
+
+       for( const produit of response){
         console.log(produit.price)
         const productPrice = document.createElement('h4')
         productPrice.textContent = produit.price;
