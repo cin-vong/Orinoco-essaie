@@ -40,7 +40,6 @@ function myRequest(sectionId, url){
         productText.textContent = produit.description;
         section.appendChild(productText)
       }
-
    }
  };
          request.open('GET', url );
@@ -51,7 +50,7 @@ function myRequest(sectionId, url){
  myRequest('cameras', 'http://localhost:3000/api/cameras/');
  myRequest('furnitures','http://localhost:3000/api/furniture/');
 
-myRequest(url)
+PromiseGet(url)
 .then(function (reponse){
   const items = reponse
   return items
