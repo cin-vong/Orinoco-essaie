@@ -18,7 +18,7 @@ function myRequest(sectionId, url){
         productPrice.textContent = ("Prix : " + produit.price) ;
         section.appendChild(productPrice)
         const a = section.appendChild(document.createElement('a'))
-        a.setAttribute('href', 'produit.html# + teddies._id')
+        a.setAttribute('href', 'produit.html#' + teddies._id)
         const productBtn = document.createElement("BUTTON");
         productBtn.textContent = ("En savoir plus");
         section.appendChild(productBtn)
