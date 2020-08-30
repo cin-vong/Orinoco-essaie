@@ -32,18 +32,18 @@ function myRequest(sectionId, url){
  
  myRequest('teddies', 'http://localhost:3000/api/teddies/');
 
- const displayProduct = async () => {
-  const data = await getOneTeddy(url, id);
-  sendTeddy(data);
-  customColorsTeddy(section, data.colors)
-  add(section, data);
+//fetch//
+
+const getTeddy = async (url) => {
+  const response = await fetch(url);
+  return await response.json();
 }
 
  function customColorsTeddy (parentElt, productColors){
   let labelColor = document.createElement("label");
   let selectColor = document.createElement("select");
  
-  labelColor.setAttribute('for', 'color-list');
+  labelColor.setAttribute('color-list');
   label.textContent = 'Choix de couleurs :'
   selectColor.id = "color-list";
  
