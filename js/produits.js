@@ -23,9 +23,7 @@ function myRequest(sectionId, url){
         const productText = document.createElement('p')
         productText.textContent = produit.description;
         section.appendChild(productText)
-       }
-
-    
+       }   
    }
  };
          request.open('GET', url );
@@ -33,34 +31,34 @@ function myRequest(sectionId, url){
       }
  
  myRequest('teddies', 'http://localhost:3000/api/teddies/');
- myRequest('cameras', 'http://localhost:3000/api/cameras/');
- myRequest('furnitures','http://localhost:3000/api/furniture/');
 
- PromiseGet(url)
-.then(function (reponse){
-  const items = reponse
-  return items
-})
-.then(function createList (items){
-  const ul = document.getElementById('items')
-  for (let i = 0; i < items.length; i++){
-    const items = items[i]
-    const li = ul.appendChild(document.createDocumentFragment('li'))
-    const h3 = li.appendChild(document.createDocumentFragment('h3'))
-    const divImg = li.appendChild(document.createDocumentFragment('div'))
-    const img = divImg.appendChild(document.createDocumentFragment('img'))
-    const a = li.appendChild(document.createDocumentFragment('a'))
-    li.classList.add('item')
-    h3.classList.add('item_title')
-    divImg.classList.add('item_img')
-    a.classList.add('item_btn')
-    h3.innerText = item.name
-    a.innerText = 'Voir ce modèle'
-    img.setAttribute('src', item.iamgeUrl)
-    img.setAttribute('alt', 'une photo du modèle' + item.name)
-    a.setAttribute('href', 'produit.html# + item._id')
-  }
-})
+ const displayProduct = async () => {
+  const data = await getOneTeddy(url, id);
+  sendTeddy(data);
+  customColorsTeddy(section, data.colors)
+  add(section, data);
+}
 
+ function customColorsTeddy (parentElt, productColors){
+  let labelColor = document.createElement("label");
+  let selectColor = document.createElement("select");
+ 
+  labelColor.setAttribute('for', 'color-list');
+  label.textContent = 'Choix de couleurs :'
+  selectColor.id = "color-list";
+ 
+  parentElt.appendChild(label);
+  parentElt.appendChild(select);
+ 
+ productColors.forEach(productColors => {
+   const option =document.createElement('option');
+   option.textContent = productColors
+   select.appendChild(option);
+ })
 
-
+  Selection.addEventListener('change', (event) => {
+    const colorChosen = event.target.value;
+    console.log(colorChosen);
+  })
+ }
+ 
