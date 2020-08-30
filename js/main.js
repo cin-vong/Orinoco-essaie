@@ -11,35 +11,18 @@ function myRequest(sectionId, url){
          const productTitle = document.createElement('h3')
          productTitle.textContent = produit.name;
          section.appendChild(productTitle)
-       }
-
-       for( const produit of response){
-        console.log(produit._id)
-        const productId = document.createElement('h5')
-        productId.textContent = produit._id;
-        section.appendChild(productId)
-      }
-
-       for( const produit of response){
-        console.log(produit.price)
-        const productPrice = document.createElement('h4')
-        productPrice.textContent = produit.price;
+         const productImg = document.createElement('img')
+         productImg.setAttribute('src', produit.imageUrl);
+         section.appendChild(productImg)
+         const productPrice = document.createElement('h4')
+        productPrice.textContent = ("Prix : " + produit.price) ;
         section.appendChild(productPrice)
-      }
-
-      for( const produit of response){
-        console.log(produit.imageUrl)
-        const productImg = document.createElement('src')
-        productImg.textContent = produit.imageUrl;
-        section.appendChild(productImg)
-      }
-
-      for( const produit of response){
-        console.log(produit.description)
-        const productText = document.createElement('p')
-        productText.textContent = produit.description;
-        section.appendChild(productText)
-      }
+        const a = section.appendChild(document.createElement('a'))
+        a.setAttribute('href', 'produit.html# + teddies._id')
+        const productBtn = document.createElement("BUTTON");
+        productBtn.textContent = ("En savoir plus");
+        section.appendChild(productBtn)
+       }
    }
  };
          request.open('GET', url );
@@ -50,30 +33,4 @@ function myRequest(sectionId, url){
  myRequest('cameras', 'http://localhost:3000/api/cameras/');
  myRequest('furnitures','http://localhost:3000/api/furniture/');
 
-PromiseGet(url)
-.then(function (reponse){
-  const items = reponse
-  return items
-})
-.then(function createList (items){
-  const ul = document.getElementById('items')
-  for (let i = 0; i < items.length; i++){
-    const items = items[i]
-    const li = ul.appendChild(document.createDocumentFragment('li'))
-    const h3 = li.appendChild(document.createDocumentFragment('h3'))
-    const divImg = li.appendChild(document.createDocumentFragment('div'))
-    const img = divImg.appendChild(document.createDocumentFragment('img'))
-    const a = li.appendChild(document.createDocumentFragment('a'))
-    li.classList.add('item')
-    h3.classList.add('item_title')
-    divImg.classList.add('item_img')
-    a.classList.add('item_btn')
-    h3.innerText = item.name
-    a.innerText = 'Voir ce modèle'
-    img.setAttribute('src', item.iamgeUrl)
-    img.setAttribute('alt', 'une photo du modèle' + item.name)
-    a.setAttribute('href', 'produit.html# + item._id')
-  }
-})
-
-
+ 
