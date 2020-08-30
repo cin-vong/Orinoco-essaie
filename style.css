@@ -87,6 +87,24 @@ nav ul li {
 
 }
 
+img {
+    width: 30%;
+  }
+
+#teddies {
+    border-bottom: 5px black;
+    box-shadow: 6px 6px 15px gray;
+  }
+
+  #cameras {
+    border-bottom: 5px black;
+    box-shadow: 6px 6px 15px gray;
+  }
+
+  #furnitures {
+    border-bottom: 5px black;
+    box-shadow: 6px 6px 15px gray;
+  }
 
 
 /*pied de page*/
