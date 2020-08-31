@@ -18,9 +18,8 @@ function myRequest(sectionId, url){
         section.appendChild(productPrice)
         const productId = document.createElement('a')
         productId.setAttribute('href', 'produits.html?id=' + produit._id)
-        const productBtn = document.createElement("button");
-        productBtn.textContent = ("En savoir plus");
-        section.appendChild(productBtn)
+        productId.textContent = 'En savoir plus';
+        section.appendChild(productId)
         console.log(produit._id)
        }
    }
