@@ -1,8 +1,8 @@
 const url = new URL(document.URL)
-const paramId = url.searchParams.get('id')
-console.log(paramId)
+const teddyId = url.searchParams.get('id')
+console.log(teddyId)
 
-const urlToFetch = 'http://localhost:3000/api/teddies/' + paramId
+const urlToFetch = 'http://localhost:3000/api/teddies/' + teddyId
 console.log(urlToFetch);
 
 fetch(urlToFetch)
@@ -13,10 +13,7 @@ fetch(urlToFetch)
     console.log(produit.name);
   })
 
-
-  
 //fetch//
-
  function customColorsTeddy (parentElt, productColors){
   let labelColor = document.createElement("label");
   let selectColor = document.createElement("select");
@@ -39,4 +36,38 @@ fetch(urlToFetch)
     console.log(colorChosen);
   })
  }
+
+ //affichage produit//
+
+ function displayProduct( product, optionName){
+   for( const produit of produit ){
+    const productTitle = document.createElement('h3')
+    productTitle.textContent = produit.name;
+    section.appendChild(productTitle)
+    const productImg = document.createElement('img')
+    productImg.setAttribute('src', produit.imageUrl);
+    section.appendChild(productImg)
+    const productDescrpt = document.createElement('p')
+    productDescrpt.textContent = produit.description;
+    section.appendChild(productDescrpt)
+    const productPrice = document.createElement('h4')
+    productPrice.textContent = ("Prix : " + produit.price) ;
+    section.appendChild(productPrice)
+     console.log(product.name);
+
+     if(optionName !== null){
+       producit[optionName].forEach(option =>{
+         console.log(option)
+       });
+     }
+   }
+ }
+
+ async function getProducts(url, option){
+   let reponse = await fetch(url);
+  let product = await reponse.json();
+  console.log(product)
+  displayProduct(products, option);
+ }
  
+ getProducts('http://localhost:3000/api/teddies/', 'teddies');
