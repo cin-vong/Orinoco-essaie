@@ -56,7 +56,7 @@ fetch(urlToFetch)
      console.log(product.name);
 
      if(optionName !== null){
-       producit[optionName].forEach(option =>{
+       product[optionName].forEach(option =>{
          console.log(option)
        });
      }
