@@ -52,7 +52,7 @@ console.log(urlToFetch);
    selectColor.appendChild(option);
  })
 
-  selectElement.addEventListener('change', (event) => {
+  selectColor.addEventListener('change', (event) => {
     const colorChosen = event.target.value
     console.log(colorChosen)
   })
@@ -74,5 +74,6 @@ function addToCart (product){
   const div = document.createElement('div')
   btn.innerHTML = `<div class= cart-btn>Ajouter au panier</div>`
   div.classList.add('add-to-cart');
-  
+  btn.appendChild(div);
+  btn.appendChild(btn);
 }
