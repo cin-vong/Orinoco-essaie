@@ -5,53 +5,22 @@ console.log(teddyId)
 const urlToFetch = 'http://localhost:3000/api/teddies/' + teddyId
 console.log(urlToFetch);
 
-fetch(urlToFetch)
-  .then(function(response){
-    return response.json();
-  })
-  .then (function (produit){
-    console.log(produit.name);
-  })
-
-//fetch//
- function customColorsTeddy (parentElt, productColors){
-  let labelColor = document.createElement("label");
-  let selectColor = document.createElement("select");
- 
-  labelColor.setAttribute('color-list');
-  label.textContent = 'Choix de couleurs :'
-  selectColor.id = "color-list";
- 
-  parentElt.appendChild(label);
-  parentElt.appendChild(select);
- 
- productColors.forEach(productColors => {
-   const option =document.createElement('option');
-   option.textContent = productColors
-   select.appendChild(option);
- })
-
-  Selection.addEventListener('change', (event) => {
-    const colorChosen = event.target.value;
-    console.log(colorChosen);
-  })
- }
-
  //affichage produit//
 
  function displayProduct( product, optionName){
-   for( const produit of produit ){
+  const section = document.getElementById('teddies')
+   console.log(product);   
     const productTitle = document.createElement('h3')
-    productTitle.textContent = produit.name;
+    productTitle.textContent = product.name;
     section.appendChild(productTitle)
     const productImg = document.createElement('img')
-    productImg.setAttribute('src', produit.imageUrl);
+    productImg.setAttribute('src', product.imageUrl);
     section.appendChild(productImg)
     const productDescrpt = document.createElement('p')
-    productDescrpt.textContent = produit.description;
+    productDescrpt.textContent = product.description;
     section.appendChild(productDescrpt)
     const productPrice = document.createElement('h4')
-    productPrice.textContent = ("Prix : " + produit.price) ;
+    productPrice.textContent = ("Prix : " + product.price + '€') ;
     section.appendChild(productPrice)
      console.log(product.name);
 
@@ -61,13 +30,37 @@ fetch(urlToFetch)
        });
      }
    }
+
+ //Select colors//
+ function customColorsTeddy (parentElt, productColors){
+  const formColor = document.createElement("form");
+  const selectColor = document.createElement("select");
+ 
+  formColor.setAttribute('color-list');
+  form.textContent = 'Choix de couleurs :'
+  selectColor.id = "color-list";
+ 
+  parentElt.appendChild(form);
+  parentElt.appendChild(select);
+ 
+ productColors.forEach(productColors => {
+   const option =document.createElement('option');
+   option.textContent = productColors
+   select.appendChild(option);
+ })
+
+  selectElement.addEventListener('change', (event) => {
+    const colorChosen = selectElement.options[event.target.value].value;
+
+    console.log(colorChosen);
+  })
  }
 
- async function getProducts(url, option){
-   let reponse = await fetch(url);
-  let product = await reponse.json();
-  console.log(product)
-  displayProduct(products, option);
- }
- 
- getProducts('http://localhost:3000/api/teddies/', 'teddies');
+ async function getProduct(urlToFetch){
+ let reponse = await fetch(urlToFetch);
+ let product = await reponse.json();
+ console.log(product)
+ displayProduct(product, 'colors');
+}
+
+getProduct(urlToFetch, 'colors');
