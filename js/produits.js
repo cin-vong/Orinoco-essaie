@@ -20,7 +20,7 @@ console.log(urlToFetch);
     productDescrpt.textContent = product.description;
     section.appendChild(productDescrpt)
     const productPrice = document.createElement('h4')
-    productPrice.textContent = ("Prix : " + product.price + '€') ;
+    productPrice.textContent = ("Prix : " + product.price/ 100 + "€"); 
     section.appendChild(productPrice)
      console.log(product.name);
 
@@ -32,27 +32,29 @@ console.log(urlToFetch);
    }
 
  //Select colors//
- function customColorsTeddy (parentElt, productColors){
-  const formColor = document.createElement("form");
-  const selectColor = document.createElement("select");
- 
-  formColor.setAttribute('color-list');
-  form.textContent = 'Choix de couleurs :'
-  selectColor.id = "color-list";
- 
-  parentElt.appendChild(form);
-  parentElt.appendChild(select);
+ function customColorsTeddy (productColors){
+  const section = document.getElementById('teddies')
+  const formColor = document.createElement('form')
+  const labelColor = document.createElement('label')
+  labelColor.setAttribute('for', 'selectColor')
+  labelColor.textContent = "Choix de couleurs : "
+  const selectColor = document.createElement('select')
+  selectColor.setAttribute('name', 'color')
+  selectColor.id = "selectColor"
+
+  section.appendChild(formColor)
+  formColor.appendChild(labelColor)
+  formColor.appendChild(selectColor)
  
  productColors.forEach(productColors => {
-   const option =document.createElement('option');
+   const option = document.createElement('option');
    option.textContent = productColors
-   select.appendChild(option);
+   selectColor.appendChild(option);
  })
 
   selectElement.addEventListener('change', (event) => {
-    const colorChosen = selectElement.options[event.target.value].value;
-
-    console.log(colorChosen);
+    const colorChosen = event.target.value
+    console.log(colorChosen)
   })
  }
 
@@ -61,6 +63,16 @@ console.log(urlToFetch);
  let product = await reponse.json();
  console.log(product)
  displayProduct(product, 'colors');
+ customColorsTeddy(product.colors)
 }
 
 getProduct(urlToFetch, 'colors');
+
+function addToCart (product){
+  addToCart (product);
+  const btn = document.createElement('div')
+  const div = document.createElement('div')
+  btn.innerHTML = `<div class= cart-btn>Ajouter au panier</div>`
+  div.classList.add('add-to-cart');
+  
+}
